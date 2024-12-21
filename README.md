@@ -1,72 +1,42 @@
-# TODO APP
-  
-<!-- ABOUT THE PROJECT -->
-## About The Project
-It is a basic todo application. 
+# LLM QA BOT
+
+<!-- ABOUT THE BOT -->
+
+## About The BOT
+
+It is LLM Based QA Bot which read PDF and store embedding into vector DB and
+user ask the questions then it will fetch from Vector DB and rhen redefine the
+queries using LLM
 
 ### Technology Used
 
-* Node JS
-* Mongo DB
+- Python
+- Pinecone
+- langchain
+- Hugging face
+- Google Colob
 
+### Execution instruction
 
-<!-- URLS -->
-## URLS
+1. Upload ibynb file in google colob or simillar tools
+2. Download required libraries which is mentioned in the file itself
+3. update the pdf path
+4. update the pinecone API key
+5. For LLM, it requires GPU, it should be
 
-### Code repository URL
-[https://github.com/manishsohna/nagp_todo_app_k8](https://github.com/manishsohna/nagp_todo_app_k8)
+### security
 
-### Docker HUB URL
-[https://hub.docker.com/repository/docker/dockersohna/todo-app/general](https://hub.docker.com/repository/docker/dockersohna/todo-app/general)
+1. store API Key in valut (eg. Azure)
+2. Use JWT/OAuth for authentication and authorization
+3. Use HTTPS (SSL/TLS)
+4. Implement the rate limiting
 
-### API Service URL
-[Service URL](http://20.253.46.187)
+### scalability
 
-## Deployment
+1. Deploy the QA bot on the K8
+2. Use Load balancer
+3. Use HPA
 
-### Folder Structure
+### performance
 
-  - `K8s/` - All kubernetes files under this folder
-  - `app.js` - source code
-  - `Dockerfile` - Docker file
-
-### Kubernetes Cluster Information
-Created Kubernetes cluster using Azure Kubernetes Service (AKS) with free trial version.
-
-<!-- insert data -->
-### Create record in database
-
-```Method: Http Post```
- 
- payload example:
- ``` JSON
-  {
-    "title": "title text here",
-    "description":  "description text here"
-  }
-```
-
-### Rolling Update
-
-using the below kubectl command for the rolling update
-
-``` sh
-kubectl set image deployment/todo-app-deployment todo-app=dockersohna/todo-app:v1.1
-```
-
-### load test script
-
-using the below script to increse the load in a particular pod
-
-``` javascript
-function load() {
-let res = 0;
-for (let i =0 i <1000000; i++) {
-res += Math.sqrt(i)*Math.sqrt(i)
-}
-}
-
-for (let i =0; i <1000; i++) {
-load()
-}
-```
+1. For faster response implement cache (Redis)
